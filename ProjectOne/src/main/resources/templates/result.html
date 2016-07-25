@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel='stylesheet' href='/webjars/bootstrap/css/bootstrap.min.css'
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+
+<body>
+	<div th:include="fragments/menu :: top-menu"></div>
+	<div class="container">
+		<div class="container-floid">
+			
+			<table class="table table-hover" style="font-size: medium;">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Gender</th>
+						<th>FirstName</th>
+						<th>LastName</th>
+						<th>IdNumber</th>
+						<th>Email</th>
+						<th>CreatedDate</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr th:each="obj : ${persons}">
+						<td th:text="${obj.id}"></td>
+						<td th:switch="${obj.gender}">
+							<p th:case="'Male'">Ms.</p>
+							<p th:case="'Female'">Mrs.</p>
+							<p th:case="'Other'">Trs.</p>
+						</td>
+						<td th:text="${obj.firstName}"></td>
+						<td th:text="${obj.lastName}"></td>
+						<td th:text="${obj.idNumber}"></td>
+						<td th:text="${obj.email}"></td>
+						<td th:text="${#calendars.format(obj.createdDate,'yyyy/MMM/dd HH:mm:ss')}"></td>
+						<td><a th:href="@{'/edit/'+${obj.id}}"><button
+									type="button" class="btn btn-info">Edit</button></a></td>
+						<td><a th:href="@{'/delete/'+${obj.id}}"><button
+									type="button" class="btn btn-danger">Delete</button></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

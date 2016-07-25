@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel='stylesheet' href='/webjars/bootstrap/css/bootstrap.min.css'
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+
+</head>
+
+<body>
+	<div th:include="fragments/menu :: top-menu"></div>
+	<div class="container">
+		<div class="container-fluid  col-md-6 ">
+			<form action="#" th:action="@{/form}" th:object="${person}" th:method="post">
+			  		<fieldset class="form-group">
+    				<label for="gSelect">Gender:</label>
+    				<select class="form-control" id="gSelect" th:field="*{gender}">
+      					<option th:value="Female">Female</option>
+      					<option th:value="Male" selected="selected">Male</option>
+      					<option th:value="Other">Other</option>
+    				</select>
+  					</fieldset>
+					<fieldset class="form-group">
+						<label for="fName">FirstName:   </label>
+						<label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></label>
+						<input id="fName" type="text" class="form-control" th:field="*{firstName}" />
+					</fieldset>
+					<fieldset class="form-group">
+						<label for="lName">LastName:   </label>
+						<label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></label>
+						<input id="lName" type="text" class="form-control" th:field="*{lastName}" />
+					</fieldset>
+					<fieldset class="form-group">
+						<label for="idNum">IdNumber:   </label>
+						<label th:if="${#fields.hasErrors('idNumber')}" th:errors="*{idNumber}"></label>
+						<input id="idNum" type="text" class="form-control" th:field="*{idNumber}" />
+					</fieldset>
+					<fieldset class="form-group">
+						<label for="Email">Email:   </label>
+						<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" ></label>
+						<input id="Email" type="email" class="form-control" th:field="*{email}" />
+					</fieldset>
+					<fieldset class="form-group">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</fieldset>
+		</form>
+		</div>
+	</div>
+
+</body>
+
+</html>

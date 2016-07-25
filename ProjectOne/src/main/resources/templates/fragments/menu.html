@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title></title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel='stylesheet' href='/webjars/bootstrap/css/bootstrap.min.css'
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+
+</head>
+
+<body>
+	<div th:fragment="top-menu">
+		<div class="container">
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">Project name</a>
+					</div>
+					<div id="navbar">
+						<ul class="nav navbar-nav">
+							<li><a href="#" th:href="@{/}">Home</a></li>
+							<li><a href="#" th:href="@{/form}">Form</a></li>
+							<li><a href="#" th:href="@{/result}">Result</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+									Sign Up</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+									Login</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+</body>
+</html>
